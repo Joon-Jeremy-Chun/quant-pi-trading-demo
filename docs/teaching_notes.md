@@ -24,15 +24,21 @@ python src/demo_signal.py --prices examples/synthetic_prices.csv
 python src/demo_backtest.py --prices examples/synthetic_prices.csv
 ```
 
-3. Ask students to inspect the daily events and explain when the demo strategy enters or exits.
+3. Run the toy corporate-event alert script.
 
-4. Change the moving-average windows.
+```bash
+python src/demo_event_alert.py --calendar examples/corporate_events.csv --today 2026-05-21 --lookahead-days 14
+```
+
+4. Ask students to inspect the daily events and explain when the demo strategy enters or exits.
+
+5. Change the moving-average windows.
 
 ```bash
 python src/demo_backtest.py --prices examples/synthetic_prices.csv --short-window 2 --long-window 4
 ```
 
-5. Discuss why this does not prove a real trading edge.
+6. Discuss why this does not prove a real trading edge.
 
 ## Discussion Questions
 
@@ -41,6 +47,7 @@ python src/demo_backtest.py --prices examples/synthetic_prices.csv --short-windo
 - What logs would you want before trusting an automated system?
 - Why should credentials and production outputs never be committed?
 - How would you design a dry-run mode before sending real orders?
+- How would you prevent duplicate email or Slack alerts?
 
 ## What Students Can Extend
 
@@ -49,6 +56,7 @@ python src/demo_backtest.py --prices examples/synthetic_prices.csv --short-windo
 - Add a maximum-position rule.
 - Add transaction costs.
 - Add a simple HTML or text report.
+- Add a notification ledger for the event alert demo.
 - Write tests for the moving-average and backtest functions.
 
 ## What This Demo Intentionally Omits

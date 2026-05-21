@@ -1,0 +1,6 @@
+symbol,event_date,event_type,title,source_url
+RKLB,2026-05-28,earnings,Rocket Lab demo earnings call,https://example.com/rklb-earnings
+GLD,2026-05-29,issuer_update,SPDR Gold Shares demo holdings update,https://example.com/gld-update
+QQQ,2026-06-01,index_event,Nasdaq-100 demo rebalance watch,https://example.com/qqq-index
+BRK-B,2026-06-03,shareholder_event,Berkshire Hathaway demo shareholder note,https://example.com/brkb-note
+VRT,2026-06-12,earnings,Vertiv demo earnings watch,https://example.com/vrt-earnings

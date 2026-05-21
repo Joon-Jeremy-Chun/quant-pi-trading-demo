@@ -10,6 +10,7 @@ This repository is intentionally a demo scaffold. It shows the architecture, dat
 - Signal generation interface
 - Paper-trading style order handoff shape
 - Email/reporting workflow concept
+- Corporate event alert workflow concept
 - Raspberry Pi scheduled runner architecture
 
 ## What Is Not Included
@@ -26,10 +27,13 @@ This repository is intentionally a demo scaffold. It shows the architecture, dat
 ```text
 docs/
   architecture.md      Public system overview
+  event_alert_demo.md  Corporate event alert demo notes
   disclaimer.md        Risk and usage notes
 examples/
+  corporate_events.csv Fake company event calendar
   synthetic_prices.csv Fake sample market data
 src/
+  demo_event_alert.py  Toy event alert renderer
   demo_signal.py       Toy signal generator using synthetic data
 .env.example           Fake environment shape
 ```
@@ -38,6 +42,10 @@ src/
 
 ```bash
 python src/demo_signal.py --prices examples/synthetic_prices.csv
+```
+
+```bash
+python src/demo_event_alert.py --calendar examples/corporate_events.csv --today 2026-05-21 --lookahead-days 14
 ```
 
 ## License
