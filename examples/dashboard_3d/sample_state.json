@@ -1,0 +1,16 @@
+{
+  "demo_only": true,
+  "prices": [100, 101, 100.5, 102, 101.8, 103.2, 102.7, 104, 103.6, 105, 104.5, 106],
+  "agents": [
+    {"id":"data","name":"Pip","role":"Data explorer","color":"#599fc4","position":[-5,-3.5],"input":"12 invented price observations","output":"A tidy list of sample values","task":"Check that every sample value is a number."},
+    {"id":"signal","name":"Nova","role":"Pattern explorer","color":"#9e89c7","position":[5,-3.5],"input":"The same invented observations","output":"A descriptive short-average label","task":"Compare the last three values with the full sample average."},
+    {"id":"review","name":"Remy","role":"Example reviewer","color":"#dfad65","position":[-5,3.5],"input":"The toy description and its source values","output":"A classroom review note","task":"Explain why a toy average is not evidence of a trading edge."},
+    {"id":"report","name":"Fern","role":"Report writer","color":"#76b496","position":[5,3.5],"input":"The example description and review note","output":"An in-browser learning summary","task":"Describe the example in plain language. Nothing is sent."}
+  ],
+  "steps": [
+    {"agent":"data","status":"working","message":"Pip checks 12 synthetic values. This is a scripted illustration, not a data download."},
+    {"agent":"signal","status":"exploring","message":"Nova compares a short average with the full sample average. This describes the fake series only."},
+    {"agent":"review","status":"reviewing","message":"Remy asks about sample size, costs and future-data leakage. This review is a teaching script, not a real audit."},
+    {"agent":"report","status":"ready","message":"Fern displays a learning summary in this page. No email, account action or AI request is made."}
+  ]
+}

@@ -12,6 +12,7 @@ This repository is intentionally a demo scaffold. It shows the architecture, dat
 - Email/reporting workflow concept
 - Corporate event alert workflow concept
 - Raspberry Pi scheduled runner architecture
+- A student 3D dashboard starter with fictional teammates and synthetic data
 
 ## What Is Not Included
 
@@ -28,17 +29,33 @@ This repository is intentionally a demo scaffold. It shows the architecture, dat
 docs/
   architecture.md      Public system overview
   event_alert_demo.md  Corporate event alert demo notes
+  dashboard_3d.md      3D starter setup and classroom exercises (English / Korean)
   disclaimer.md        Risk and usage notes
 examples/
   corporate_events.csv Fake company event calendar
   synthetic_prices.csv Fake sample market data
+  dashboard_3d/       Small independent 3D lab; editable mock JSON
 src/
   demo_event_alert.py  Toy event alert renderer
   demo_signal.py       Toy signal generator using synthetic data
+  demo_dashboard.py    Local server for the student 3D starter
 .env.example           Fake environment shape
 ```
 
 ## Quick Demo
+
+### Student 3D dashboard
+
+```bash
+python src/demo_dashboard.py
+```
+
+Open **http://127.0.0.1:8000/**. On Windows you can also use `py -3 src/demo_dashboard.py`.
+No Python packages or API keys are required. The 3D view loads pinned Three.js from a CDN;
+internet is needed for 3D, and a 2D fallback remains usable without it.
+See the [step-by-step guide and learning exercises](docs/dashboard_3d.md).
+
+### Toy signal and event examples
 
 ```bash
 python src/demo_signal.py --prices examples/synthetic_prices.csv

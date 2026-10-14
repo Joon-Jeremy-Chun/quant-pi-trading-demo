@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Little Quant Lab | Student 3D Starter</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">LQ</span> Little Quant Lab</a>
+    <span class="badge">Student starter · synthetic data</span>
+  </header>
+  <main>
+    <section class="intro">
+      <p class="eyebrow">BUILD SOMETHING YOU CAN EXPLAIN</p>
+      <h1>A little lab, in 3D.</h1>
+      <p>Four tiny teammates. One pretend workflow. Explore the scene, then make it your own.</p>
+    </section>
+    <div class="workspace">
+      <section class="scene-card" aria-label="Interactive lab">
+        <div class="scene-toolbar">
+          <div><span class="dot"></span><strong>Learning playground</strong><span id="step-label">Step 0</span></div>
+          <button id="reset-view" type="button">Reset view</button>
+        </div>
+        <div id="stage" aria-label="3D lab; drag to rotate, scroll to zoom, click a teammate">
+          <div id="scene-message" class="scene-message" role="status">Loading the 3D view… The teammate buttons below work while it loads.</div>
+          <div id="fallback-map" class="fallback-map" hidden aria-label="2D lab fallback"></div>
+          <div class="scene-caption">Drag to orbit · scroll to zoom · click a teammate</div>
+        </div>
+        <div id="agent-buttons" class="agent-buttons" aria-label="Select a teammate"></div>
+      </section>
+      <aside class="sidebar">
+        <section class="panel profile" aria-label="Selected teammate">
+          <p class="eyebrow">MEET YOUR TEAMMATE</p>
+          <h2 id="agent-name">Loading sample data…</h2>
+          <p id="agent-role"></p>
+          <span id="agent-status" class="status">waiting</span>
+          <p id="agent-task" class="task"></p>
+          <dl><dt>Input</dt><dd id="agent-input">—</dd><dt>Output</dt><dd id="agent-output">—</dd></dl>
+        </section>
+        <section class="panel controls" aria-label="Simulation controls">
+          <p class="eyebrow">TRY THE WORKFLOW</p>
+          <p>Advance a scripted example. Activity badges and movement illustrate the current step.</p>
+          <div class="button-row"><button id="next-step" class="primary" type="button" disabled>Next step</button><button id="play" type="button" disabled>Play</button><button id="reset" type="button" disabled>Reset</button></div>
+          <p class="small">Playback repeats every four steps. It runs entirely in this browser.</p>
+        </section>
+        <section class="panel sample" aria-label="Synthetic prices">
+          <p class="eyebrow">MADE-UP PRICE SERIES</p>
+          <svg id="sparkline" viewBox="0 0 260 70" role="img" aria-label="Synthetic price chart"></svg>
+          <p class="small">A teaching prop, not a market quote or a trading recommendation.</p>
+        </section>
+      </aside>
+    </div>
+    <section class="activity panel" aria-label="Workflow activity">
+      <div class="activity-title"><h2>What just happened?</h2><span class="small">Scripted example</span></div>
+      <ol id="activity-log" aria-live="polite"><li>Loading the sample workflow…</li></ol>
+    </section>
+    <footer>Start with <code>sample_state.json</code> for names and steps, <code>app.js</code> for the scene, and <code>styles.css</code> for the look.<br>No accounts, AI calls, orders, or email sending are connected.</footer>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
