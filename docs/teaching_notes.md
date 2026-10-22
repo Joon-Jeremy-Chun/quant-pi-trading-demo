@@ -1,73 +1,42 @@
-# Teaching Notes
+# Instructor guide — a small, inspectable software lesson
 
-This repository is a small public teaching scaffold. It is meant to help students see how an automated trading project can be organized without exposing private research, live broker code, real model artifacts, or real order history.
+[Home](../README.md) · [Student start](START_HERE.md) · [한국어 과제](LABS.ko.md) · [Answer notes](SOLUTIONS.ko.md)
 
-## Learning Goals
+## Intended learning outcomes
 
-- Separate data loading, signal generation, backtesting, and reporting.
-- Understand why reproducible inputs matter.
-- Practice using synthetic data before touching real market data.
-- Learn the difference between a software demo and a deployable trading system.
-- Discuss operational safeguards such as dry runs, logs, and credential isolation.
+Students should be able to separate file I/O from pure calculations; trace time-dependent state; distinguish a current observation, a decision and a later action; test inclusive date boundaries; explain a scripted dashboard; and record assumptions alongside an output.
 
-## Suggested Class Flow
+Prerequisites are elementary Python variables, lists, conditions and functions. A browser and Python 3.10+ are enough for the core work. Node is optional for JS validation. No accounts, external datasets, paid models or hardware are required.
 
-1. Run the toy signal script.
+## Suggested 90-minute lesson plan
 
-```bash
-python src/demo_signal.py --prices examples/synthetic_prices.csv
-```
+This is an instructor planning estimate, not a measured completion time.
 
-2. Run the toy backtest script.
+| Segment | Suggested time | Activity | Check understanding |
+| --- | --- | --- | --- |
+| Setup and arithmetic | 15 min | Open a local copy; run the snapshot script | Which rows enter each average? |
+| Time and state | 20 min | Trace the fifth decision and sixth action | Which value was available at decision time? |
+| Date filters and report | 20 min | Use fixed dates and vary endpoints | Is the end date included; is anything delivered? |
+| Visual state | 20 min | Select teammates, change a synthetic JSON field, use 2D | Which file controls the screen? |
+| Explain and test | 15 min | Add a boundary test and write assumptions | What does the passing test establish? |
 
-```bash
-python src/demo_backtest.py --prices examples/synthetic_prices.csv
-```
+한국어: 학생이 실행 화면을 복사하는 데서 끝내지 않고, 입력을 하나 바꾸기 전에 결과를 예상하도록 유도하세요. 3D가 제한된 실습실에서는 처음부터 2D 경로를 사용해도 동일한 상태 실습을 진행할 수 있습니다.
 
-3. Run the toy corporate-event alert script.
+## Assessment rubric
 
-```bash
-python src/demo_event_alert.py --calendar examples/corporate_events.csv --today 2026-05-21 --lookahead-days 14
-```
+| Criterion | Evidence of understanding |
+| --- | --- |
+| Reproducible setup | Command, version, exact synthetic input and fixed report date |
+| Calculation | Correct averages and explicit comparison/equality rule |
+| Time ordering | Current decision and next-observation action are separated |
+| Testing | One small boundary test with an independently justified expectation |
+| Explanation | Assumptions, remaining limits and source of each displayed value |
+| Public hygiene | Only invented fixtures; no personal/access/operational records |
 
-4. Ask students to inspect the daily events and explain when the demo strategy enters or exits.
+Use [the six exercises](LABS.ko.md), followed by [answers](SOLUTIONS.ko.md). Optional extensions should change one assumption at a time. Do not grade a larger toy return as evidence of a better model.
 
-5. Change the moving-average windows.
+## Boundaries for instructors
 
-```bash
-python src/demo_backtest.py --prices examples/synthetic_prices.csv --short-window 2 --long-window 4
-```
+The public moving averages are intentionally elementary and independent of private work. Do not infer or request real parameters, positions, device routes, account snapshots or a production topology. The dashboard's fictional roles are not a map of an actual team or private agent system. Lessons stop at local calculations, preview files and browser controls.
 
-6. Discuss why this does not prove a real trading edge.
-
-## Discussion Questions
-
-- What assumptions are hidden inside a backtest?
-- Why should a project use synthetic data for public examples?
-- What logs would you want before trusting an automated system?
-- Why should credentials and production outputs never be committed?
-- How would you design a dry-run mode before sending real orders?
-- How would you prevent duplicate email or Slack alerts?
-
-## What Students Can Extend
-
-- Add more synthetic price rows.
-- Export the daily backtest events to a CSV file.
-- Add a maximum-position rule.
-- Add transaction costs.
-- Add a simple HTML or text report.
-- Add a notification ledger for the event alert demo.
-- Write tests for the moving-average and backtest functions.
-
-## What This Demo Intentionally Omits
-
-- Real strategy parameters.
-- Real broker API calls.
-- Real account identifiers or credentials.
-- Production model selection logic.
-- Live order books, tranche ledgers, or private execution logs.
-- Any claim that the toy signal has investment value.
-
-## Instructor Note
-
-Keep the framing clear: this repo teaches software structure, reproducibility, and risk awareness. It should not be presented as a profitable strategy or as a live trading template.
+The [validation record](VALIDATION.md) documents the tested environment. Re-run local checks when you modify the material; a classroom example is not a deployment template or evidence of profitable trading.

@@ -1,10 +1,11 @@
 ﻿import argparse
 import csv
+import math
 from pathlib import Path
 
 
 def load_closes(path: Path) -> list[float]:
-    with path.open(newline="", encoding="utf-8") as fh:
+    with path.open(newline="", encoding="utf-8-sig") as fh:
         rows = list(csv.DictReader(fh))
     return [float(row["close"]) for row in rows]
 
@@ -12,6 +13,8 @@ def load_closes(path: Path) -> list[float]:
 def build_demo_signal(closes: list[float]) -> dict[str, object]:
     if len(closes) < 3:
         raise ValueError("Need at least three prices for the demo signal")
+    if any(not math.isfinite(value) or value <= 0 for value in closes):
+        raise ValueError("Prices must be finite positive numbers")
 
     short_avg = sum(closes[-3:]) / 3
     long_avg = sum(closes) / len(closes)

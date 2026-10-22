@@ -37,6 +37,8 @@ def load_events(path: Path) -> list[CorporateEvent]:
 
 
 def upcoming_events(events: list[CorporateEvent], today: date, lookahead_days: int) -> list[CorporateEvent]:
+    if lookahead_days < 0:
+        raise ValueError("lookahead_days must be non-negative")
     end_date = today + timedelta(days=lookahead_days)
     return sorted(
         [event for event in events if today <= event.event_date <= end_date],

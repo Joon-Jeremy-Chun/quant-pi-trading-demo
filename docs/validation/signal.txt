@@ -1,0 +1,4 @@
+signal: BUY
+short_average: 102.6333
+long_average: 101.51
+demo_only: True

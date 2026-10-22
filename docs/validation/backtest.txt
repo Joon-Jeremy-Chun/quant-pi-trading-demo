@@ -1,0 +1,21 @@
+Demo backtest summary
+=====================
+demo_only: True
+execution_assumption: next_observation_close
+initial_cash: 10000.0
+final_equity: 10187.75
+total_return_pct: 1.88
+buy_hold_equity: 10310.0
+buy_hold_return_pct: 3.1
+
+Daily events
+2026-01-02 close=100.0 signal=WAIT executed_signal=WAIT action=NONE equity=10000.0
+2026-01-05 close=100.7 signal=WAIT executed_signal=WAIT action=NONE equity=10000.0
+2026-01-06 close=100.35 signal=WAIT executed_signal=WAIT action=NONE equity=10000.0
+2026-01-07 close=101.1 signal=WAIT executed_signal=WAIT action=NONE equity=10000.0
+2026-01-08 close=101.8 signal=BUY executed_signal=WAIT action=NONE equity=10000.0
+2026-01-09 close=101.2 signal=BUY executed_signal=BUY action=ENTER equity=10000.0
+2026-01-12 close=102.05 signal=BUY executed_signal=BUY action=NONE equity=10083.99
+2026-01-13 close=102.6 signal=BUY executed_signal=BUY action=NONE equity=10138.34
+2026-01-14 close=102.2 signal=BUY executed_signal=BUY action=NONE equity=10098.81
+2026-01-15 close=103.1 signal=BUY executed_signal=BUY action=NONE equity=10187.75

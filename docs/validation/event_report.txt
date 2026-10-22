@@ -1,0 +1,20 @@
+Corporate Event Watch Demo
+==========================
+Run date: 2026-05-21
+Window: next 14 calendar days
+
+- 2026-05-28 (7d): DEMO-A [example_update] Fictional company A classroom update
+  source: https://example.com/demo-a
+- 2026-05-29 (8d): DEMO-B [example_update] Fictional company B classroom update
+  source: https://example.com/demo-b
+- 2026-06-01 (11d): DEMO-C [example_review] Fictional company C classroom review
+  source: https://example.com/demo-c
+- 2026-06-03 (13d): DEMO-D [example_note] Fictional company D classroom note
+  source: https://example.com/demo-d
+
+--- Slack Preview ---
+Corporate Event Watch Demo (2026-05-21, next 14 days)
+* DEMO-A: 2026-05-28 in 7d - Fictional company A classroom update
+* DEMO-B: 2026-05-29 in 8d - Fictional company B classroom update
+* DEMO-C: 2026-06-01 in 11d - Fictional company C classroom review
+* DEMO-D: 2026-06-03 in 13d - Fictional company D classroom note

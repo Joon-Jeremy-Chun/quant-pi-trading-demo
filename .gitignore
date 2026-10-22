@@ -19,3 +19,8 @@ logs/
 Thumbs.db
 .vscode/
 .idea/
+
+# Classroom tooling and legacy example outbox
+.pytest_cache/
+.ruff_cache/
+examples/outbox/

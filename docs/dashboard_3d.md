@@ -1,5 +1,7 @@
 # Student 3D Dashboard Starter
 
+[Home](../README.md) · [한국어 상세 안내](dashboard_3d.ko.md) · [Student start](START_HERE.md) · [Exercises](LABS.ko.md)
+
 This is a small, independent classroom example of a 3D dashboard. Four fictional teammates sit in an open lab. Click a teammate to see its role, rotate the scene, and advance a scripted workflow. Names, prices and activity are invented. The scene is made with basic shapes; no character downloads, private campus files or paid AI service are required.
 
 ## Run it
@@ -80,8 +82,14 @@ GitHub에서 ZIP을 내려받아 압축을 풀고, 저장소 폴더에서 `pytho
 
 ## References and license
 
-- [Three.js installation guide](https://threejs.org/manual/en/installation.html)
+- [Three.js installation guide](https://threejs.org/manual/#en/installation)
 - [Three.js source and MIT license](https://github.com/mrdoob/three.js/tree/r160)
 - [Repository license](../LICENSE)
 
 The starter code and shapes were authored independently for this demo. No original reference-office code, downloaded character models, production campus source or embedded personal work history is redistributed. Three.js is loaded from its CDN and retains its own MIT license.
+
+## Fresh classroom evidence
+
+The [verification record](VALIDATION.md) includes actual 3D, intentional 2D and mobile browser checks. The local server now allows exactly the four named dashboard assets. See [public boundaries](PUBLIC_BOUNDARY.md) before extending the lesson.
+
+![Fresh local synthetic 3D classroom](../assets/dashboard-3d.png)

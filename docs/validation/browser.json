@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-21",
+  "checks": [
+    "2D fallback intentionally selected",
+    "four keyboard teammate buttons",
+    "Next step selects scripted teammate",
+    "manual teammate selection",
+    "Play/Pause stops playback",
+    "Reset restores step zero",
+    "2D route makes no CDN request",
+    "mobile layout has no horizontal overflow",
+    "default route reaches a usable view",
+    "WebGL canvas present",
+    "default route workflow advances"
+  ],
+  "default_view_mode": "3d",
+  "all_passed": true
+}

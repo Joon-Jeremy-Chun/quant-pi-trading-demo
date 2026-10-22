@@ -4,25 +4,39 @@ import argparse
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from urllib.parse import unquote, urlsplit
 
 
 DASHBOARD_ROOT = Path(__file__).resolve().parents[1] / "examples" / "dashboard_3d"
+PUBLIC_ASSETS = {"index.html", "styles.css", "app.js", "sample_state.json"}
 
 
 class DashboardHandler(SimpleHTTPRequestHandler):
-    def do_GET(self) -> None:
+    def is_public_asset(self) -> bool:
+        requested = unquote(urlsplit(self.path).path)
+        name = "index.html" if requested == "/" else requested.removeprefix("/")
+        if name not in PUBLIC_ASSETS:
+            return False
         path = Path(self.translate_path(self.path)).resolve()
-        if not path.is_relative_to(DASHBOARD_ROOT) or path.is_dir() and path != DASHBOARD_ROOT:
+        return path.is_relative_to(DASHBOARD_ROOT) and (path == DASHBOARD_ROOT or path.is_file())
+
+    def do_GET(self) -> None:
+        if not self.is_public_asset():
             self.send_error(404)
             return
         super().do_GET()
 
     def do_HEAD(self) -> None:
-        path = Path(self.translate_path(self.path)).resolve()
-        if not path.is_relative_to(DASHBOARD_ROOT) or path.is_dir() and path != DASHBOARD_ROOT:
+        if not self.is_public_asset():
             self.send_error(404)
             return
         super().do_HEAD()
+
+    def end_headers(self) -> None:
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("Referrer-Policy", "no-referrer")
+        super().end_headers()
 
 
 def main() -> None:
