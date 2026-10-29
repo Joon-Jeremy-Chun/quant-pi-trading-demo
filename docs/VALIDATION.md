@@ -13,7 +13,7 @@ python tools/validate_documentation.py
 python tools/check_publication.py --history
 ```
 
-The Python tests and demos use only the standard library. Node is optional for JS checks. The reference runner writes a scoped [results JSON](validation/results.json) and three CLI output previews in docs/validation. Those previews contain only synthetic fixture output; outbox tests use temporary folders.
+The Python tests and demos use only the standard library. Node is optional for JS checks. The [results JSON](validation/results.json) and three CLI previews in docs/validation preserve the 2026-10-21 run. The current reference runner writes new evidence to a dated outputs/classroom-check folder, or checks the historical previews read-only with --check. Those previews contain only synthetic fixture output; outbox tests use temporary folders.
 
 ## Observed checks
 
@@ -24,3 +24,7 @@ An automated browser pass used a new headless Chrome profile with software WebGL
 The [3D screenshot](../assets/dashboard-3d.png), [2D screenshot](../assets/dashboard-2d.png) and [mobile screenshot](../assets/dashboard-mobile.png) show invented data only. Source and screenshots were manually reviewed; publication checks also reviewed text blobs in this public repository's own history. No private repository, device or account was accessed for the demo.
 
 These checks establish the stated classroom behaviors in the observed environment. They do not validate investment performance, market execution, message delivery, device deployment or every browser/platform combination. CDN availability can vary; the local 2D path remains a separate tested option.
+
+## 2026-10-29 automated continuity
+
+Current local checks pass 25 Python cases and nine JS state cases. The [ZIP rehearsal](STUDENT_CHECK.md) uses a new package-free virtual environment and preserves the prior evidence. [CI](CI.md) runs the public checks on Linux/Windows; actual hosted-run status is confirmed separately after publication. These are operational verification measurements, not a new trading or model-comparison experiment.

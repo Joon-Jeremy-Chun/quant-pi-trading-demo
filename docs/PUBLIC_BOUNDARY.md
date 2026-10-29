@@ -25,3 +25,7 @@ The only server address used in the guide is the student's own localhost. It ide
 `python tools/check_publication.py` inspects the public working tree and reports file/line/rule locations without echoing suspected content. `--history` also reviews public-repository text blobs in its own Git history. It does not inspect any private repository. The check looks for known credential/key shapes, non-localhost addresses, private path patterns and unreviewed URL hosts; manual source and screenshot review remains part of publication.
 
 한국어: 자료의 출처를 합성 fixture와 이미 공개된 코드로 제한합니다. 실제 장치 접속·전략·계정·운영 기록은 교육용 예시에 필요하지 않습니다. 오류를 질문할 때도 합성 입력과 관련 코드만 공유하세요.
+
+## Archive copies and CI
+
+The current-tree publication check supports Download ZIP without Git. Full-history review requires a non-shallow Git checkout; it fails with an explanation if history is unavailable. [CI](CI.md) uses full public history, read-only permissions and no secrets. Neither ZIP rehearsal nor CI accesses private devices or operational files.

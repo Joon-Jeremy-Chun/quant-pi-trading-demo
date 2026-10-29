@@ -1,0 +1,28 @@
+{
+  "checked_at_utc": "2026-10-29T22:41:55.109991+00:00",
+  "record_class": "operational-verification",
+  "scenario": "public ZIP + fresh package-free venv",
+  "python": "3.11.5",
+  "platform": "win32",
+  "public_archive_files": 59,
+  "third_party_packages": 0,
+  "checks": [
+    "public ZIP copy without Git metadata",
+    "fresh venv with zero third-party packages",
+    "three guide CLI examples and answer snippet",
+    "Python classroom tests from the archive",
+    "archive documentation references and source syntax",
+    "publication check without a Git checkout",
+    "clear explanation for unavailable Git history",
+    "documented server CLI starts and serves the local 2D route",
+    "all public browser assets are available",
+    "repository documents are outside the static server allowlist",
+    "published historical evidence remains unchanged"
+  ],
+  "all_passed": true,
+  "elapsed_seconds": 3.562,
+  "limits": [
+    "agent technical rehearsal, not feedback from real students",
+    "HTTP startup check does not execute browser WebGL or CDN imports"
+  ]
+}

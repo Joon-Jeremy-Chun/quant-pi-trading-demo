@@ -12,10 +12,12 @@
 | [Event CSV](../examples/corporate_events.csv) | Five invented calendar records | Input only |
 | [Dashboard state](../examples/dashboard_3d/sample_state.json) | Fictional roles, 12 prices and scripted steps | Browser input only |
 | [HTML](../examples/dashboard_3d/index.html) / [CSS](../examples/dashboard_3d/styles.css) / [JS](../examples/dashboard_3d/app.js) | UI structure, appearance and behavior | Local UI; optional pinned 3D imports |
-| [Python tests](../tests/test_classroom.py) | 22 focused behavior checks | Temporary fixtures and loopback server |
+| [Python tests](../tests/test_classroom.py) | 25 focused behavior checks | Temporary fixtures and loopback server |
 | [JS tests](../tests/test_dashboard_state.cjs) | Nine sample-contract cases | No network or package dependencies |
 | [Documentation validator](../tools/validate_documentation.py) | Source/links/fences/SVG checks | Read-only |
 | [Publication checker](../tools/check_publication.py) | Public text and optional public-history review | Read-only |
-| [Reference runner](../tools/verify_classroom.py) | Repeat fixture checks and save evidence | Writes docs/validation artifacts |
+| [Reference runner](../tools/verify_classroom.py) | Repeat fixture checks and save evidence | Writes dated ignored outputs; --check is read-only |
 
 `.env.example` is an unused illustrative shape. `hello-from-claude.md` is a preserved historical greeting, not part of the lesson. Original public file names remain stable.
+
+[CI](CI.md) also runs the [archive rehearsal tool](../tools/check_student_archive.py).

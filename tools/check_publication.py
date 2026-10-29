@@ -8,10 +8,13 @@ import ipaddress
 import json
 from pathlib import Path
 import re
+import shutil
 import subprocess
 from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
+SKIP = {'.git', '.venv', 'venv', '__pycache__', '.pytest_cache', '.ruff_cache',
+        'node_modules', 'outputs', 'logs', 'figures'}
 TEXT = {'.py','.js','.cjs','.mjs','.html','.css','.json','.csv','.md','.txt','.svg',
         '.example','.yml','.yaml','.toml','.ini','.cfg','.sh','.bat','.ps1'}
 HOSTS = {'github.com','docs.github.com','docs.python.org','www.python.org',
@@ -47,11 +50,35 @@ def inspect_text(path, text):
 def git(*args):return subprocess.check_output(['git',*args],cwd=ROOT)
 
 
+def checkout_files():
+    """Support both a Git checkout and the public Download ZIP classroom path."""
+    if shutil.which('git'):
+        result = subprocess.run(['git', 'rev-parse', '--show-toplevel'], cwd=ROOT,
+                                capture_output=True, text=True)
+        if result.returncode == 0 and Path(result.stdout.strip()).resolve() == ROOT:
+            names = set(git('ls-files', '--cached', '--others', '--exclude-standard', '-z')
+                        .decode('utf-8').split('\0')) - {''}
+            return names, True
+    names = set()
+    for path in ROOT.rglob('*'):
+        relative = path.relative_to(ROOT)
+        if SKIP.intersection(relative.parts) or not path.is_file():
+            continue
+        # Never follow a classroom archive symlink into some other folder.
+        if path.resolve().is_relative_to(ROOT):
+            names.add(relative.as_posix())
+    return names, False
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--history',action='store_true')
     args=parser.parse_args()
-    names=set(git('ls-files','--cached','--others','--exclude-standard','-z').decode('utf-8').split('\0'))-{''}
+    names, is_checkout = checkout_files()
+    if args.history and not is_checkout:
+        parser.error('--history requires Git and a repository checkout; omit it for Download ZIP.')
+    if args.history and git('rev-parse', '--is-shallow-repository').strip() == b'true':
+        parser.error('--history requires complete history; use fetch-depth: 0 in CI.')
     findings=[];count=0
     for name in sorted(names):
         p=ROOT/name
@@ -69,7 +96,9 @@ def main():
                 seen.add(sha)
                 findings.extend(inspect_text('history:'+name,git('cat-file','blob',sha).decode('utf-8-sig')))
                 history_blobs+=1
-    print(json.dumps({'public_text_files':count,'history_text_blobs':history_blobs,'findings':findings},ensure_ascii=False,indent=2))
+    print(json.dumps({'source_mode':'git' if is_checkout else 'archive',
+                      'public_text_files':count,'history_text_blobs':history_blobs,
+                      'findings':findings},ensure_ascii=False,indent=2))
     return bool(findings)
 
 

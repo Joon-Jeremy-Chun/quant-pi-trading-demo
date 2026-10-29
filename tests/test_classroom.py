@@ -4,12 +4,15 @@ from functools import partial
 import http.client
 from http.server import ThreadingHTTPServer
 import importlib.util
+import hashlib
 from pathlib import Path
 import shutil
 import sys
+import subprocess
 import tempfile
 import threading
 import unittest
+from unittest.mock import patch
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
@@ -167,6 +170,37 @@ class DashboardTests(unittest.TestCase):
 
 
 class PublicationTests(unittest.TestCase):
+    def test_archive_fallback_needs_no_git(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder).resolve()
+            (root/'README.md').write_text('Public classroom fixture', encoding='utf-8')
+            (root/'outputs').mkdir()
+            (root/'outputs'/'scratch.txt').write_text('Not publication input', encoding='utf-8')
+            with patch.object(publication, 'ROOT', root), patch.object(publication.shutil, 'which', return_value=None):
+                names, is_checkout = publication.checkout_files()
+            self.assertEqual(names, {'README.md'})
+            self.assertFalse(is_checkout)
+
+    def test_history_option_explains_archive_limitation(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root/'tools').mkdir()
+            script = root/'tools'/'check_publication.py'
+            shutil.copyfile(ROOT/'tools'/'check_publication.py', script)
+            result = subprocess.run([sys.executable, str(script), '--history'], cwd=root,
+                                    capture_output=True, text=True)
+            self.assertEqual(result.returncode, 2)
+            self.assertIn('requires Git and a repository checkout', result.stderr)
+
+    def test_reference_check_preserves_published_evidence(self):
+        paths = sorted((ROOT/'docs'/'validation').glob('*'))
+        before = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in paths if p.is_file()}
+        result = subprocess.run([sys.executable, str(ROOT/'tools'/'verify_classroom.py'), '--check'],
+                                cwd=ROOT, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        after = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in paths if p.is_file()}
+        self.assertEqual(before, after)
+
     def test_localhost_is_permitted(self):
         self.assertEqual(publication.inspect_text('fixture','http://127.0.0.1:8000/'),[])
 

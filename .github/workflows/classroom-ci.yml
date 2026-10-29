@@ -1,0 +1,67 @@
+name: Classroom checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: classroom-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONUTF8: '1'
+
+jobs:
+  python:
+    name: Python ${{ matrix.python }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.10', '3.13']
+    steps:
+      - name: Check out public source with history
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Test public classroom behavior
+        run: python -m unittest discover -s tests -v
+      - name: Check published synthetic CLI outputs without overwriting them
+        run: python tools/verify_classroom.py --check
+      - name: Rehearse the Download ZIP guide in a package-free virtual environment
+        run: python tools/check_student_archive.py
+      - name: Check source and local documentation links
+        run: python tools/validate_documentation.py
+      - name: Review public text and complete public history
+        run: python tools/check_publication.py --history
+
+  javascript:
+    name: JavaScript sample contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out public source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+      - name: Parse browser code
+        run: node --check examples/dashboard_3d/app.js
+      - name: Check synthetic sample validation
+        run: node tests/test_dashboard_state.cjs

@@ -112,7 +112,7 @@ Pip·Nova·Remy·Fern을 선택해 입력·출력·역할을 읽고, Next step·
 python -m unittest discover -s tests -v
 ```
 
-현재 버전의 Python 집중 테스트는 22개입니다. 평균의 경계값, 다음 관측 처리, 시간 순서, 날짜 필터, 로컬 파일 출력, 공개 파일 제공 범위를 검사합니다. 테스트 통과는 실제 거래 성과나 모든 환경에서의 동작을 보장하는 말과 다릅니다.
+현재 버전의 Python 집중 테스트는 25개입니다. 평균의 경계값, 다음 관측 처리, 시간 순서, 날짜 필터, 로컬 파일 출력, 공개 파일 제공 범위를 검사합니다. 테스트 통과는 실제 거래 성과나 모든 환경에서의 동작을 보장하는 말과 다릅니다.
 
 선택 사항: Node.js가 있으면 `node tests/test_dashboard_state.cjs`로 JSON 상태 검사 9개를 실행할 수 있습니다. Node는 기본 Python 실습과 대시보드 사용에 필수는 아닙니다.
 
@@ -132,3 +132,7 @@ python -m unittest discover -s tests -v
 | Node 명령을 찾지 못함 | 선택 검사만 생략 가능; Python 기본 실습에는 필요 없음 |
 
 실습 중 막혔을 때는 **실행 명령·오류 메시지·합성 입력**만 함께 정리하면 재현에 도움이 됩니다. 계정·비밀번호·개인 문서·장치 접속 설정을 붙여 넣을 필요가 없습니다. 다음은 [과제](LABS.ko.md), 풀이 후에는 [해설](SOLUTIONS.ko.md)로 이어가세요.
+
+## 자동 검사와 ZIP 점검 — 2026-10-29
+
+[자동 검사](CI.md)는 공개 예제·문서·공개 범위 검사를 반복합니다. `python tools/verify_classroom.py --check`는 기존 결과를 바꾸지 않고 정답 예제를 확인합니다. `python tools/check_publication.py`는 Git 없는 ZIP에서도 현재 파일을 검사하지만 `--history`는 Git checkout에만 사용합니다. [새 환경 따라 하기 점검](STUDENT_CHECK.md)은 에이전트 기술 점검이며 실제 학생 평가와 구분합니다.

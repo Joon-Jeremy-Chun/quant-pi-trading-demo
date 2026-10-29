@@ -2,6 +2,10 @@
 
 # Quant Pi Trading Demo · Little Quant Lab
 
+[![Classroom checks](https://github.com/Joon-Jeremy-Chun/quant-pi-trading-demo/actions/workflows/classroom-ci.yml/badge.svg)](https://github.com/Joon-Jeremy-Chun/quant-pi-trading-demo/actions/workflows/classroom-ci.yml)
+
+[Automated checks](docs/CI.md) · [Student-guide rehearsal](docs/STUDENT_CHECK.md)
+
 **Learn how a small data program is organized, using invented data and a local classroom dashboard.**
 
 This repository is for students who want to read a CSV, follow a simple calculation, trace a simulation, test boundary cases, and explain a result. The historical repository name is retained; **a Raspberry Pi is not needed**. All exercises run on your own computer.
@@ -67,8 +71,12 @@ node --check examples/dashboard_3d/app.js
 node tests/test_dashboard_state.cjs
 ```
 
-The maintenance pass verified **22 Python tests, nine state-validation cases, and 11 browser checks**, including 3D rendering, intentional 2D mode and mobile layout. See [validation evidence](docs/VALIDATION.md), [repair notes](docs/REPAIRS.md), [file guide](docs/FILE_GUIDE.md), and [public boundary](docs/PUBLIC_BOUNDARY.md).
+The 2026-10-21 maintenance pass verified **22 Python tests, nine state-validation cases, and 11 browser checks**, including 3D rendering, intentional 2D mode and mobile layout. See [validation evidence](docs/VALIDATION.md), [repair notes](docs/REPAIRS.md), [file guide](docs/FILE_GUIDE.md), and [public boundary](docs/PUBLIC_BOUNDARY.md).
 
 ## License and credits
 
 The repository uses the [MIT license](LICENSE). The classroom scene consists of independently authored basic shapes; Three.js retains its own [MIT license](https://github.com/mrdoob/three.js/tree/r160). Source fixtures are invented, and new screenshots show only those fixtures. [Asset provenance](assets/SOURCES.md) · [Educational scope](docs/disclaimer.md).
+
+## 2026-10-29 continuity update
+
+The current Python suite has 25 cases, with ZIP-mode and evidence-preservation coverage. [CI](docs/CI.md) repeats them on Linux/Windows. The [student-guide rehearsal](docs/STUDENT_CHECK.md) uses a fresh package-free ZIP environment; it is a technical check, not real-student feedback.

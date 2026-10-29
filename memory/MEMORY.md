@@ -7,3 +7,9 @@
 Published `98ac2fa5900241e0132656cd12db7aca62122da5`; origin/main matched. Original HEAD, status and all 20 original
 file hashes were preserved. 22 Python, nine JS and 11 browser checks passed.
 Current public text and own public history checks found no sensitive-pattern matches.
+
+## 2026-10-29 continuity
+
+Public CI and package-free ZIP rehearsal are prepared in an isolated worktree.
+Read the [current handoff](../docs/handoffs/HANDOFF_2026-10-29_ci_and_student_rehearsal.md).
+Local checks and hosted workflow state must be reported separately.
