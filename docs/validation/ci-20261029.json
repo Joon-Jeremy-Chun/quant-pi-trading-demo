@@ -1,0 +1,28 @@
+{
+  "head_sha": "b34b1cde99fb33098e3aef51b90db94f7d72131f",
+  "run_id": 40967897157,
+  "html_url": "https://github.com/Joon-Jeremy-Chun/quant-pi-trading-demo/actions/runs/40967897157",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "JavaScript sample contract",
+      "conclusion": "success"
+    },
+    {
+      "name": "Python 3.10 / ubuntu-latest",
+      "conclusion": "success"
+    },
+    {
+      "name": "Python 3.10 / windows-latest",
+      "conclusion": "success"
+    },
+    {
+      "name": "Python 3.13 / ubuntu-latest",
+      "conclusion": "success"
+    },
+    {
+      "name": "Python 3.13 / windows-latest",
+      "conclusion": "success"
+    }
+  ]
+}

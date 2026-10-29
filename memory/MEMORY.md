@@ -13,3 +13,7 @@ Current public text and own public history checks found no sensitive-pattern mat
 Public CI and package-free ZIP rehearsal are prepared in an isolated worktree.
 Read the [current handoff](../docs/handoffs/HANDOFF_2026-10-29_ci_and_student_rehearsal.md).
 Local checks and hosted workflow state must be reported separately.
+
+Published `b34b1cde99fb33098e3aef51b90db94f7d72131f`; origin/main matched.
+Hosted run 40967897157 passed all five jobs. The original 20 files, HEAD and status
+matched the preservation baseline. See the dated CI evidence in docs/validation.

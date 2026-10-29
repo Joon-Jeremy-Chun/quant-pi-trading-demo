@@ -17,6 +17,8 @@ The only workflow permission is contents:read. Checkout does not persist credent
 
 Read the run result in [Actions](https://github.com/Joon-Jeremy-Chun/quant-pi-trading-demo/actions/workflows/classroom-ci.yml). A passing workflow is an automated check, not a configured branch-protection rule or a substitute for source/screenshot review. If the teaching fixture changes intentionally, review and update its expected preview separately.
 
+Verified on 2026-10-29: all five jobs succeeded for published commit `b34b1cd`. See the [hosted run](https://github.com/Joon-Jeremy-Chun/quant-pi-trading-demo/actions/runs/40967897157) and [recorded job conclusions](validation/ci-20261029.json). This dated record describes that commit; the badge/Actions page shows subsequent runs.
+
 ```console
 python -m unittest discover -s tests -v
 python tools/verify_classroom.py --check

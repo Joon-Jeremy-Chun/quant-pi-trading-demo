@@ -5,3 +5,9 @@
 이 저장소는 기준 main 7f607f6에서 격리 브랜치로 준비했습니다. .github/workflows/classroom-ci.yml은 공개 파일/이력, Python 25개, JS 9개, ZIP/빈 venv의 실행 경로를 검사합니다. 실제 학생 평가를 수행했다고 주장하지 않습니다. Git 없는 ZIP 점검과 기존 증거를 덮어쓰지 않는 --check를 보완했습니다.
 
 이번 작업은 기존 예제의 운영·재현 검증이며 새 연구 가설이나 모델 비교는 하지 않았습니다. 정책에 따라 기존 로그/인계 체계로 묶어 기록합니다. 로컬 검증, 원격 게시, GitHub-hosted CI 성공은 별도로 확인합니다.
+
+## 확인한 결과
+
+[팩트] 게시 `b34b1cde99fb33098e3aef51b90db94f7d72131f`와 origin/main이 일치했습니다. [CI run 40967897157](https://github.com/Joon-Jeremy-Chun/quant-pi-trading-demo/actions/runs/40967897157)의 다섯 작업이 모두 성공했습니다. [JSON](../validation/ci-20261029.json)은 해당 커밋의 관측 기록입니다.
+
+[팩트] 새 ZIP·Git 없는 경로·서드파티 패키지 0개인 venv의 점검을 통과했습니다. 실제 학생 평가는 미수행입니다. 원본 20개 파일의 해시·HEAD·Git 상태는 시작 기준과 동일했습니다. 후속 문서 커밋의 CI 상태는 Actions에서 별도로 확인합니다.

@@ -28,3 +28,5 @@ These checks establish the stated classroom behaviors in the observed environmen
 ## 2026-10-29 automated continuity
 
 Current local checks pass 25 Python cases and nine JS state cases. The [ZIP rehearsal](STUDENT_CHECK.md) uses a new package-free virtual environment and preserves the prior evidence. [CI](CI.md) runs the public checks on Linux/Windows; actual hosted-run status is confirmed separately after publication. These are operational verification measurements, not a new trading or model-comparison experiment.
+
+Publication verification: [run 40967897157](https://github.com/Joon-Jeremy-Chun/quant-pi-trading-demo/actions/runs/40967897157) completed successfully for `b34b1cde99fb33098e3aef51b90db94f7d72131f`, including all four Python/OS combinations and the Node job. The [machine-readable record](validation/ci-20261029.json) preserves the observed conclusions. Original checkout HEAD/status and 20 original file hashes remained unchanged.
